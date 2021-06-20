@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     final int STATUS_CONNECTED = 1;
 
     // server IP
-    String ip = "10.131.150.171";
+    String ip = "59.10.64.190";
     // ConnectionService's binder
     SocketManager manager = null;
 
@@ -93,8 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void connectToServer(View v) throws RemoteException {
         System.out.println("Call connectToServer()");
-        manager.setSocket(ip);
-        manager.connect();
+
+        if (manager.getStatus() == STATUS_CONNECTED){
+
+        } else {
+            manager.setSocket(ip);
+            manager.connect();
+
+        }
     }
 
     public void sendData(View v) throws RemoteException {
